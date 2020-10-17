@@ -1,26 +1,17 @@
 const mongoose = require('mongoose')
 
-const imageSchema = new mongoose.Schema(
+const locationSchema = new mongoose.Schema(
     {
-        url: {
+        name: {
             type: String,
-            required: [true, 'Image is required'],
+            required: [true, 'Name is required'],
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
         },
-        date: {
+        coordenates: {
             type: String
         },
-        location: {
-            type: mongoose.Schema.Types.ObjectId,
-        }, 
-        contact: {
-            type: [mongoose.Schema.Types.ObjectId],
-        },
-        description: {
-            type: String,
-        }
     } , {
         timestamps: true,
         toJSON: {
@@ -35,5 +26,5 @@ const imageSchema = new mongoose.Schema(
     }
 )
 
-const Image = mongoose.model('Image', imageSchema)
-module.exports = Image
+const Location = mongoose.model('Location', locationSchema)
+module.exports = Location
