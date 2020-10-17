@@ -1,0 +1,38 @@
+{
+  "name": "nudo-api",
+  "version": "1.0.0",
+  "description": "Api for Nudo app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NU-DO/nudo-api.git"
+  },
+  "keywords": [
+    "Nudo"
+  ],
+  "author": "Fernando Marin and Miguel Valle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NU-DO/nudo-api/issues"
+  },
+  "homepage": "https://github.com/NU-DO/nudo-api#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cloudinary": "^1.23.0",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "http-errors": "^1.8.0",
+    "mongoose": "^5.10.9",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^6.4.14"
+  }
+}
