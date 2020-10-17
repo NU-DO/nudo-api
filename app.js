@@ -18,7 +18,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(session)
-app.use(passportConfig)
 
 app.use((req, _, next) => {
   req.currentUser = req.session.user
@@ -60,3 +59,17 @@ const port = normalizePort(process.env.PORT || '3010')
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
 })
+
+function normalizePort(val) {
+  const port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    return val;
+  }
+
+  if (port >= 0) {
+    return port;
+  }
+
+  return false;
+}

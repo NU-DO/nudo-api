@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
 
-const locationSchema = new mongoose.Schema(
+const playlistSchema = new mongoose.Schema(
     {
-        name: {
+        songId: {
             type: String,
-            required: [true, 'Name is required'],
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        coordenates: {
-            type: String
-        },
+        decade: {
+            type: String,
+            enum: ["40's", "50's", "60's", "70's", "80's", "90's", "00's"]
+        }
     } , {
         timestamps: true,
         toJSON: {
@@ -27,5 +27,5 @@ const locationSchema = new mongoose.Schema(
     }
 )
 
-const Location = mongoose.model('Location', locationSchema)
-module.exports = Location
+const Playlist = mongoose.model('Playlist', playlistSchema)
+module.exports = Playlist

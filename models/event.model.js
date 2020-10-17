@@ -1,27 +1,24 @@
 const mongoose = require('mongoose')
 
-const imageSchema = new mongoose.Schema(
+const eventSchema = new mongoose.Schema(
     {
-        url: {
+        title: {
             type: String,
-            required: [true, 'Image is required'],
+            required: [true, 'Title is required']
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        date: {
-            type: String
-        }, 
-        contact: {
-            type: [mongoose.Schema.Types.ObjectId]
-        },
         description: {
             type: String
         },
-        event: {
-            type: mongoose.Schema.Types.ObjectId
+        year: {
+            type: Number
         },
+        links: {
+            type: [String]
+        }
     } , {
         timestamps: true,
         toJSON: {
@@ -36,5 +33,12 @@ const imageSchema = new mongoose.Schema(
     }
 )
 
-const Image = mongoose.model('Image', imageSchema)
-module.exports = Image
+eventSchema.virtual('images', {
+    ref: 'Image',
+    localField: '_id',
+    foreignField: 'event',
+    justOne: false,
+})
+
+const Event = mongoose.model('Event', eventSchema)
+module.exports = Event

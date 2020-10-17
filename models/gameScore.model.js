@@ -1,19 +1,20 @@
 const mongoose = require('mongoose')
 
-const locationSchema = new mongoose.Schema(
+
+const gameScoresSchema = new mongoose.Schema(
     {
-        name: {
-            type: String,
-            required: [true, 'Name is required'],
-        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        coordenates: {
-            type: String
+        score: {
+            type: Number,
         },
-    } , {
+        level: {
+            type: String,
+            enum: ['Easy', 'Middle', 'Difficult']
+        }
+    }, {
         timestamps: true,
         toJSON: {
           virtuals: true,
@@ -27,5 +28,6 @@ const locationSchema = new mongoose.Schema(
     }
 )
 
-const Location = mongoose.model('Location', locationSchema)
-module.exports = Location
+
+const GameScores = mongoose.model('gameScore', gameScoresSchema)
+module.exports = GameScores

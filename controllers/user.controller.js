@@ -1,5 +1,11 @@
-const User = require('../models/user.model');
-const createError = require('http-errors');
+const User = require('../models/user.model')
+// const Image = require('../models/image.model')
+// const Contact = require('../models/contact.model')
+// const Event = require('../models/event.model')
+// const Location = require('../models/location.model')
+// const Appointment = require('../models/appointment.model')
+// const GameScore = require('../models/gameScore.model')
+const createError = require('http-errors')
 
 module.exports.create = (req, res, next) => {
     const user = new User({
@@ -17,30 +23,29 @@ module.exports.create = (req, res, next) => {
     const { email, password } = req.body
   console.log('from controller:', email, password)
     if (!email || !password) {
-      throw createError(400, 'missing credentials');
+      throw createError(400, 'missing credentials')
     }
   
     User.findOne({ email: email })
       .then(user => {
         if (!user) {
-          throw createError(404, 'user not found');
+          throw createError(404, 'user not found')
         } else {
           return user.checkPassword(password)
             .then(match => {
               if (!match) {
-                throw createError(400, 'invalid password');
+                throw createError(400, 'invalid password')
               } else {
-                req.session.user = user;
-                //res.cookie('foo', 'bar')
+                req.session.user = user
                 res.json(user)
               }
             })
         }
       })
-      .catch(next);
+      .catch(next)
   }
   
   module.exports.logout = (req, res) => {
-    req.session.destroy();
-    res.status(204).json();
+    req.session.destroy()
+    res.status(204).json()
   }
