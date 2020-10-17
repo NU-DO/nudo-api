@@ -12,7 +12,7 @@ const gameScoresSchema = new mongoose.Schema(
         },
         level: {
             type: String,
-            enum: ['Easy', 'Middle', 'Difficult']
+            enum: ['Fácil', 'Medio', 'Dificil']
         }
     }, {
         timestamps: true,

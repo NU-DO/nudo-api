@@ -4,7 +4,7 @@ const locationSchema = new mongoose.Schema(
     {
         name: {
             type: String,
-            required: [true, 'Name is required'],
+            required: [true, 'El nombre de la localización es obligatorio'],
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,

@@ -4,7 +4,7 @@ const eventSchema = new mongoose.Schema(
     {
         title: {
             type: String,
-            required: [true, 'Title is required']
+            required: [true, 'El título es obligatorio']
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,

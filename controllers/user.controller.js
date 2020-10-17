@@ -46,6 +46,6 @@ module.exports.create = (req, res, next) => {
   }
   
   module.exports.logout = (req, res) => {
-    req.session.destroy()
+    console.log(req.session)
     res.status(204).json()
   }

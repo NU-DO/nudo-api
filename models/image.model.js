@@ -4,20 +4,20 @@ const imageSchema = new mongoose.Schema(
     {
         url: {
             type: String,
-            required: [true, 'Image is required'],
+            required: [true, 'Añade una imagen'],
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
         date: {
-            type: String
+            type: Number
         }, 
-        contact: {
-            type: [mongoose.Schema.Types.ObjectId]
-        },
         description: {
             type: String
+        },
+        contact: {
+            type: [mongoose.Schema.Types.ObjectId]
         },
         event: {
             type: mongoose.Schema.Types.ObjectId

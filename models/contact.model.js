@@ -4,7 +4,7 @@ const contactSchema = new mongoose.Schema(
     {
         name: {
             type: String,
-            required: true
+            required: [true, 'El nombre es obligatorio']
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
@@ -12,31 +12,26 @@ const contactSchema = new mongoose.Schema(
         },
         role: {
             type: String,
-            required: true
+            required: [true, 'La relación es obligatoria']
         },
         address: {
             type: String,
-            required: true
         },
         email: {
             type: String,
-            required: true
         },
         phone: {
             type: String,
-            required: true
         },
         photo: {
             type: String,
-            required: true
         },
         birthday: {
             type: String,
-            required: true
         }, 
         description: {
             type: String,
-            required: true
+            required: [true, 'La descripción es obligatoria']
         }
     }, {
         toJSON: {
