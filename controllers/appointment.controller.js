@@ -30,13 +30,13 @@ module.exports.edit = (req, res, next) => {
 
     Appointment.findOneAndUpdate({ _id: req.params.id }, body, { runValidators: true, new: true })
         .then(appointment => {
-            res.status(201).json({ message: 'edit from appointment.model' })
+            res.status(201).json(appointment)
         })
         .catch(next)
-
 }
 
 module.exports.delete = (req, res, next) => {
     Appointment.findByIdAndRemove(req.params.id)
+        .then(appointment => res.status(200).json(appointment))
         .catch(err => console.log(err))
 }

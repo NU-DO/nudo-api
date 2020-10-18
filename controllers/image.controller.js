@@ -20,7 +20,7 @@ module.exports.create = (req, res, next) => {
     })
 
     image.save()
-        .then(image => res.status(201).json(image))
+        .then(edit => res.status(200).json(edit))
         .catch(next)
 }
 
@@ -30,13 +30,13 @@ module.exports.edit = (req, res, next) => {
 
     Image.findOneAndUpdate({ _id: req.params.id }, body, { runValidators: true, new: true })
         .then(image => {
-            res.status(201).json({ message: 'edit from image.model' })
+            res.status(201).json(image)
         })
         .catch(next)
-
 }
 
 module.exports.delete = (req, res, next) => {
     Image.findByIdAndRemove(req.params.id)
+        .then(image => res.status(200).json(image))
         .catch(err => console.log(err))
 }

@@ -29,7 +29,7 @@ module.exports.edit = (req, res, next) => {
 
     Event.findOneAndUpdate({ _id: req.params.id }, body, { runValidators: true, new: true })
         .then(event => {
-            res.status(201).json({ message: 'edit from event.model' })
+            res.status(201).json(event)
         })
         .catch(next)
 
@@ -37,5 +37,6 @@ module.exports.edit = (req, res, next) => {
 
 module.exports.delete = (req, res, next) => {
     Event.findByIdAndRemove(req.params.id)
+        .then(event => res.status(200).json(event))
         .catch(err => console.log(err))
 }

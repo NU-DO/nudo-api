@@ -37,7 +37,7 @@ module.exports.doLogin = (req, res, next) => {
             if (!match) {
               throw createError(400, 'invalid password')
             } else {
-              Freq.session.user = user
+              req.session.user = user
               res.json(user)
             }
           })
@@ -46,12 +46,12 @@ module.exports.doLogin = (req, res, next) => {
     .catch(next)
 }
 
-module.exports.logout = (req, res) => {
-  console.log(req.session)
+module.exports.logout = (req, res, next) => {
+  req.session.destroy()
   res.status(204).json()
 }
 
-module.exports.delete = (req, res) => {
+module.exports.delete = (req, res, next) => {
   User.findByIdAndRemove(req.params.id)
     .then(() => Image.remove({user: req.params.id}))
     .then(() => Playlist.remove({user: req.params.id}))
@@ -60,5 +60,7 @@ module.exports.delete = (req, res) => {
     .then(() => Contact.remove({user: req.params.id}))
     .then(() => Location.remove({user: req.params.id}))
     .then(() => GameScore.remove({user: req.params.id}))
+    .then(() => req.session.destroy())
+    .then(next)
     .catch(err => console.log(err))
 }

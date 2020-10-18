@@ -35,7 +35,10 @@ module.exports.create = (req, res, next) => {
 
     contact.save()
         .then(contact => res.status(201).json(contact))
-        .then(() => appointment.save())
+        .then(() => {
+            appointment.save()
+                .then(appointment => res.status(201).json(appointment))
+        })
         .catch(next)
 }
 
@@ -44,13 +47,13 @@ module.exports.edit = (req, res, next) => {
 
     Contact.findOneAndUpdate({ _id: req.params.id }, body, { runValidators: true, new: true })
         .then(contact => {
-            res.status(201).json({ message: 'edit from contact.model' })
+            res.status(201).json(contact)
         })
         .catch(next)
-
 }
 
 module.exports.delete = (req, res, next) => {
     Contact.findByIdAndRemove(req.params.id)
+        .then(contact => res.status(200).json(contact))
         .catch(err => console.log(err))
 }

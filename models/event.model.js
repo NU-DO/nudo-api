@@ -14,7 +14,10 @@ const eventSchema = new mongoose.Schema(
             type: String
         },
         year: {
-            type: Number
+            type: Number,
+            required: [true, 'El año es obligatorio'],
+            min: [1900, 'Introduc un año valido'],
+            max: [2030, 'Introduc un año valido']
         },
         links: {
             type: [String]

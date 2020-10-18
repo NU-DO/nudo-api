@@ -6,6 +6,10 @@ const appointmentsSchema = new mongoose.Schema(
             type: String,
             required: [true, 'El título es obligatorio']
         }, 
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
         description: {
             type: String,
             required: [true, 'La descripción es obligatoria']
@@ -16,12 +20,12 @@ const appointmentsSchema = new mongoose.Schema(
         },
         type: {
             type: String,
-            required: [true, 'El tupo se evento es obligatoria'],
+            required: [true, 'El tipo de evento es obligatoria'],
             enum: ['Cumpleaños', 'Cita Médica', 'Reunión Familiar', 'Reunión con Amigos', 'Viaje', 'Cita Administrativa', 'Otro']
         },
         recurrency: {
             type: String,
-            required: true,
+            required: [true, 'La recurrencia del evento es obligatoria'],
             enum: ['Semanal', 'Mensual', 'Anual', 'Puntual']
         }
     }

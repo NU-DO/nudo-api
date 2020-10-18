@@ -11,7 +11,14 @@ const locationSchema = new mongoose.Schema(
             ref: 'User'
         },
         coordenates: {
-            type: String
+            lat: {
+                type: Number,
+                required: true
+            },
+            lng: {
+                type: Number,
+                required: true
+            }
         },
     } , {
         timestamps: true,
