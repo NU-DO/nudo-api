@@ -6,7 +6,7 @@ module.exports.getImages = (req, res, next) => {
     Image.find({ user: req.session.user.id})
     .then(images => {
         console.log('Ver imagenes:', images) 
-        res.json({message: 'get from image.model'})
+        res.json(images)
     })
     .catch(next)
 }
