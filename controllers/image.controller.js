@@ -3,21 +3,12 @@ const createError = require('http-errors')
 
 
 module.exports.getImages = (req, res, next) => {
-<<<<<<< HEAD
-    Image.find({ user: req.session.user.id})
-    .then(images => {
-        console.log('Ver imagenes:', images) 
-        res.json(images)
-    })
-    .catch(next)
-=======
     Image.find({ user: req.session.user.id })
         .then(images => {
             console.log('Ver imagenes:', images)
             res.json(images)
         })
         .catch(next)
->>>>>>> 584a8c3caf96a1ffc90b5c2ff7aecc169c306337
 }
 
 module.exports.create = (req, res, next) => {
