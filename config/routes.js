@@ -14,7 +14,7 @@ const upload = require('./cloudinary.config')
 router.post('/user', authMiddleware.isNotAuthenticated, userController.create)
 router.post('/login', authMiddleware.isNotAuthenticated, userController.doLogin)
 router.post('/logout', authMiddleware.isAuthenticated, userController.logout)
-// router.delete('/user/:id/delete', authMiddleware.isAuthenticated, userController.delete)
+router.delete('/user/:id/delete', authMiddleware.isAuthenticated, userController.delete)
 
 // router.get('/songs', authMiddleware.isAuthenticated, songController.getSongs)
 // router.post('/song/new', authMiddleware.isAuthenticated, songController.create)
