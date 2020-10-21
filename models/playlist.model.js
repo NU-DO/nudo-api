@@ -2,8 +2,14 @@ const mongoose = require('mongoose')
 
 const playlistSchema = new mongoose.Schema(
     {
-        songId: {
+        name: {
             type: String,
+        },
+        url: {
+            type: String,
+        },
+        artist: {
+            type: { String },
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,

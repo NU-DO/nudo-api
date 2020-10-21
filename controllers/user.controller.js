@@ -22,7 +22,6 @@ module.exports.create = (req, res, next) => {
 
 module.exports.doLogin = (req, res, next) => {
   const { email, password } = req.body
-  console.log('from controller:', email, password)
   if (!email || !password) {
     throw createError(400, 'missing credentials')
   }

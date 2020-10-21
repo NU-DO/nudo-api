@@ -1,29 +1,47 @@
 const Playlist = require('../models/playlist.model')
 const createError = require('http-errors')
 const SpotifyWebApi = require('spotify-web-api-node')
+const axios = require('axios')
 
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET
 })
 
+let token
 spotifyApi.clientCredentialsGrant()
-    .then(data => spotifyApi.setAccessToken(data.body['access_token']))
+    .then(data => {
+        token = data.body['access_token']
+        spotifyApi.setAccessToken(data.body['access_token'])
+    })
     .catch(error => console.log('Something went wrong when retrieving an access token', error))
 
 module.exports.getSongs = (req, res, next) => {
     Playlist.find({ user: req.session.user.id })
         .then(songs => {
-            console.log('Ver songs:', songs)
             res.json(songs)
         })
         .catch(next)
 }
 
+module.exports.getSongsFromSpotify = (req, res, next) => { 
+    axios({
+        url: `https://api.spotify.com/v1/search?q=${req.body.search}&type=track&market=GB`,
+        method: 'get',
+        headers: { "Authorization": `Bearer ${token}` }
+    })
+        .then(songs => {
+            res.json(songs.data.tracks.items)
+        })
+        .catch(err => console.log(err))
+}
+
 module.exports.create = (req, res, next) => {
     const playlist = new Playlist({
         user: req.session.user.id,
-        songId: req.body.songId,
+        name: req.body.name,
+        artist: req.body.artists,
+        url: req.body.url,
         decade: req.body.decade
     })
 
@@ -46,21 +64,4 @@ module.exports.delete = (req, res, next) => {
     Playlist.findByIdAndRemove(req.params.id)
         .then(playlist => res.status(200).json(playlist))
         .catch(err => console.log(err))
-}
-
-module.exports.getArtistsFromSpotify = (req, res, next) => {;
-    spotifyApi.searchArtists(`${req.body.search}`)
-        .then(data => {
-            res.json(data)
-        })
-        .catch(err => console.log('The error while searching artists occurred: ', err))
-}
-
-module.exports.getSongsFromSpotify = (req, res, next) => {;
-    spotifyApi.searchTracks(`${req.body.search}`)
-        .then(data => {
-            console.log(data.body.tracks.items);
-            res.json(data)
-        })
-        .catch(err => console.log('The error while searching artists occurred: ', err))
 }

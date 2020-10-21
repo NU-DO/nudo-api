@@ -5,7 +5,6 @@ const createError = require('http-errors')
 module.exports.getContacts = (req, res, next) => {
     Contact.find({ user: req.session.user.id })
         .then(contacts => {
-            console.log('Ver events:', contacts)
             res.json(contacts)
         })
         .catch(next)

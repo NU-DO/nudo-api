@@ -4,7 +4,6 @@ const createError = require('http-errors')
 module.exports.getEvents = (req, res, next) => {
     Event.find({ user: req.session.user.id })
         .then(events => {
-            console.log('Ver events:', events)
             res.json(events)
         })
         .catch(next)

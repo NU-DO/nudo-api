@@ -4,7 +4,6 @@ const createError = require('http-errors')
 module.exports.getScores = (req, res, next) => {
     GameScore.find({ user: req.session.user.id })
         .then(gameScores => {
-            console.log('Ver gameScores:', gameScores)
             res.json(gameScores)
         })
         .catch(next)

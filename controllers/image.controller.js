@@ -5,7 +5,6 @@ const createError = require('http-errors')
 module.exports.getImages = (req, res, next) => {
     Image.find({ user: req.session.user.id })
         .then(images => {
-            console.log('Ver imagenes:', images)
             res.json(images)
         })
         .catch(next)

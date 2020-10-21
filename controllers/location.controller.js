@@ -4,7 +4,6 @@ const createError = require('http-errors')
 module.exports.getLocations = (req, res, next) => {
     Location.find({ user: req.session.user.id })
         .then(location => {
-            console.log('Ver Locations:', location)
             res.json(location)
         })
         .catch(next)

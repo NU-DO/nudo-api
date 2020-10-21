@@ -4,7 +4,6 @@ const createError = require('http-errors')
 module.exports.getAppointments = (req, res, next) => {
     Appointment.find({ user: req.session.user.id })
         .then(appointments => {
-            console.log('Ver appointments:', appointments)
             res.json(appointments)
         })
         .catch(next)
