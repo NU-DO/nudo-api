@@ -6,7 +6,6 @@ const locationSchema = new mongoose.Schema(
             type: String,
             required: [true, 'El nombre de la localización es obligatorio'],
         },
-
         description: {
             type: String
         },
@@ -14,28 +13,27 @@ const locationSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        coordenates: {
-            lat: {
-                type: Number,
-                required: true
-            },
-            lng: {
-                type: Number,
-                required: true
-            }
+        lat: {
+            type: Number,
+            required: true
         },
-    } , {
-        timestamps: true,
-        toJSON: {
-          virtuals: true,
-          transform: (doc, ret) => {
+        lng: {
+            type: Number,
+            required: true
+        },
+
+    }, {
+    timestamps: true,
+    toJSON: {
+        virtuals: true,
+        transform: (doc, ret) => {
             ret.id = doc._id
             delete ret._id
             delete ret.__v
             return ret
-          }
         }
     }
+}
 )
 
 const Location = mongoose.model('Location', locationSchema)
