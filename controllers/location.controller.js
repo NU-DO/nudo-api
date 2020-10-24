@@ -13,6 +13,7 @@ module.exports.create = (req, res, next) => {
     const location = new Location({
         user: req.session.user.id,
         name: req.body.name,
+        description: req.body.description,  
         coordenates: {
             lng: req.body.lng,
             lat: req.body.lat,

@@ -4,8 +4,8 @@ const SpotifyWebApi = require('spotify-web-api-node')
 const axios = require('axios')
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET
+    clientId: process.env.SPOTIFY_CLIENT_ID,
+    clientSecret: process.env.SPOTIFY_CLIENT_SECRET
 })
 
 let token

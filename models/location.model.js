@@ -6,6 +6,10 @@ const locationSchema = new mongoose.Schema(
             type: String,
             required: [true, 'El nombre de la localización es obligatorio'],
         },
+
+        description: {
+            type: String
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
