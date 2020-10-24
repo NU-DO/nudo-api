@@ -8,7 +8,7 @@ const playlistSchema = new mongoose.Schema(
         url: {
             type: String,
         },
-        artist: {
+        artists: {
             type: { String },
         },
         user: {
@@ -18,7 +18,10 @@ const playlistSchema = new mongoose.Schema(
         decade: {
             type: String,
             enum: ["40's", "50's", "60's", "70's", "80's", "90's", "00's"]
-        }
+        },
+        image: {
+            type: String,
+        },
     } , {
         timestamps: true,
         toJSON: {

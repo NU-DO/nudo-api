@@ -40,9 +40,10 @@ module.exports.create = (req, res, next) => {
     const playlist = new Playlist({
         user: req.session.user.id,
         name: req.body.name,
-        artist: req.body.artists,
+        artists: req.body.artists,
         url: req.body.url,
-        decade: req.body.decade
+        decade: req.body.decade,
+        image: req.body.album.images[0].url
     })
 
     playlist.save()
