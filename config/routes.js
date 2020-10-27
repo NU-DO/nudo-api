@@ -17,7 +17,7 @@ router.post('/logout', authMiddleware.isAuthenticated, userController.logout)
 router.delete('/user/:id/delete', authMiddleware.isAuthenticated, userController.delete)
 
 router.get('/song', authMiddleware.isAuthenticated, playlistController.getSongs)
-router.post('/songsSpotify', /*authMiddleware.isAuthenticated,*/ playlistController.getSongsFromSpotify)
+router.post('/songsSpotify', authMiddleware.isAuthenticated, playlistController.getSongsFromSpotify)
 router.post('/song/new', authMiddleware.isAuthenticated, playlistController.create)
 router.patch('/song/:id/edit', authMiddleware.isAuthenticated, playlistController.edit)
 router.delete('/song/:id/delete', authMiddleware.isAuthenticated, playlistController.delete)
