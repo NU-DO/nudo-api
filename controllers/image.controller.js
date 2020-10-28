@@ -15,6 +15,7 @@ module.exports.create = (req, res, next) => {
         user: req.session.user.id,
         url: req.body.url,
         date: req.body.date,
+        title: req.body.title,
         description: req.body.description,
     })
 
