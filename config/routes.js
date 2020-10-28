@@ -9,7 +9,8 @@ const eventController = require('../controllers/event.controller')
 const locationController = require('../controllers/location.controller')
 const appointmentController = require('../controllers/appointment.controller')
 const gameScoreController = require('../controllers/gameScore.controller')
-const upload = require('./cloudinary.config')
+const uploadController = require('../controllers/upload.controller')
+const upload = require('../config/cloudinary.config')
 
 router.post('/user', authMiddleware.isNotAuthenticated, userController.create)
 router.post('/login', authMiddleware.isNotAuthenticated, userController.doLogin)
@@ -17,19 +18,19 @@ router.post('/logout', authMiddleware.isAuthenticated, userController.logout)
 router.delete('/user/:id/delete', authMiddleware.isAuthenticated, userController.delete)
 
 router.get('/song', authMiddleware.isAuthenticated, playlistController.getSongs)
-router.post('/songsSpotify', /*authMiddleware.isAuthenticated,*/ playlistController.getSongsFromSpotify)
+router.post('/songsSpotify', authMiddleware.isAuthenticated, playlistController.getSongsFromSpotify)
 router.post('/song/new', authMiddleware.isAuthenticated, playlistController.create)
 router.patch('/song/:id/edit', authMiddleware.isAuthenticated, playlistController.edit)
 router.delete('/song/:id/delete', authMiddleware.isAuthenticated, playlistController.delete)
 
 router.get('/image', authMiddleware.isAuthenticated, imageController.getImages)
-router.post('/image/new', authMiddleware.isAuthenticated, upload.single('image'), imageController.create)
-router.patch('/image/:id/edit', authMiddleware.isAuthenticated, upload.single('image'), imageController.edit)
+router.post('/image/new', authMiddleware.isAuthenticated, imageController.create)
+router.patch('/image/:id/edit', authMiddleware.isAuthenticated, imageController.edit)
 router.delete('/image/:id/delete', authMiddleware.isAuthenticated, imageController.delete)
 
 router.get('/contact', authMiddleware.isAuthenticated, contactController.getContacts)
-router.post('/contact/new', authMiddleware.isAuthenticated, upload.single('image'), contactController.create)
-router.patch('/contact/:id/edit', authMiddleware.isAuthenticated, upload.single('image'), contactController.edit)
+router.post('/contact/new', authMiddleware.isAuthenticated, contactController.create)
+router.patch('/contact/:id/edit', authMiddleware.isAuthenticated, contactController.edit)
 router.delete('/contact/:id/delete', authMiddleware.isAuthenticated, contactController.delete)
 
 router.get('/event', authMiddleware.isAuthenticated, eventController.getEvents)
@@ -50,4 +51,6 @@ router.delete('/appointment/:id/delete', authMiddleware.isAuthenticated, appoint
 router.get('/gamescore', authMiddleware.isAuthenticated, gameScoreController.getScores)
 router.post('/gamescore/new', authMiddleware.isAuthenticated, gameScoreController.create)
 
-module.exports = router
+router.post('/upload', authMiddleware.isAuthenticated, upload.single('url'), uploadController.upload)
+
+module.exports = router 

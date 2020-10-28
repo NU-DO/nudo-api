@@ -25,7 +25,8 @@ module.exports.create = (req, res, next) => {
 
 module.exports.edit = (req, res, next) => {
     const body = req.body
-
+    console.log(req.body)
+    console.log(req.params.id)
     Location.findOneAndUpdate({ _id: req.params.id }, body, { runValidators: true, new: true })
         .then(location => {
             res.status(201).json(location)
