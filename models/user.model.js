@@ -12,11 +12,11 @@ const userSchema = new mongoose.Schema(
             unique: true,
             trim: true,
             lowercase: true,
-            match: [EMAIL_PATTERN, 'El Email es invalida']
+            match: [EMAIL_PATTERN, 'El Email es invalido']
         },
         username: {
             type: String,
-            required: [true, 'El Username es obligatoria'],
+            required: [true, 'El nombre de usuario es obligatorio'],
             unique: true,
             trim: true,
             lowercase: true

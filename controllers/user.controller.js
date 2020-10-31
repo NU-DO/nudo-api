@@ -6,6 +6,7 @@ const Event = require('../models/event.model')
 const Location = require('../models/location.model')
 const Appointment = require('../models/appointment.model')
 const GameScore = require('../models/gameScore.model')
+const mongoose = require('mongoose')
 const createError = require('http-errors')
 
 module.exports.create = (req, res, next) => {
