@@ -25,6 +25,7 @@ const contactSchema = new mongoose.Schema(
         },
         photo: {
             type: String,
+            default: 'https://res.cloudinary.com/difhe4gl3/image/upload/v1604137571/NUDO/assets/contact-default-sin-fondo_copia_x1fmwa.png'
         },
         birthday: {
             type: String,
