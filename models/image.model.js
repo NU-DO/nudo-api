@@ -15,7 +15,8 @@ const imageSchema = new mongoose.Schema(
             required: [true, 'El título es obligatorio']
         },
         date: {
-            type: Number
+            type: Number,
+            required: [true, 'La fecha es obligatoria']
         }, 
         description: {
             type: String
