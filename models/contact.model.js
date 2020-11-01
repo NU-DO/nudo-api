@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+
 const contactSchema = new mongoose.Schema(
     {
         name: {
@@ -19,9 +21,11 @@ const contactSchema = new mongoose.Schema(
         },
         email: {
             type: String,
+            match: [EMAIL_PATTERN, 'El Email es invalido']
         },
         phone: {
             type: String,
+            minlength: [9, 'La longitud mínima es 9 dígitos']
         },
         photo: {
             type: String,

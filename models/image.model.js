@@ -11,7 +11,8 @@ const imageSchema = new mongoose.Schema(
             ref: 'User'
         },
         title: {
-            type: String
+            type: String,
+            required: [true, 'El título es obligatorio']
         },
         date: {
             type: Number
