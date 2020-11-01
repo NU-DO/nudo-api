@@ -16,7 +16,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
     transport.sendMail({
         to: email,
         from: 'Nudo Team',
-        subject: 'Please activate your account in a simple step',
+        subject: 'Activa tu cuenta en un sencillo paso',
         html: ` 
         <!doctype html>
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
@@ -122,12 +122,12 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
                                         style="border-collapse:collapse;border-spacing:0px;">
                                         <tbody>
                                             <tr>
-                                                <td style="width:560px;">
-                                                    <h2>Hi ${name}!</h2>
+                                                <td style="width:560px; display: flex; justify-content: center!important;">
+                                                    <h2>Hola ${name}!</h2>
 
-                                                    <img alt="Nudo Logo" height="auto"
-                                                        src="https://res.cloudinary.com/difhe4gl3/image/upload/v1603296190/NUDO/assets/Dashboard-icons/Icon-login_cuaa4a.svg"
-                                                        style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                    <img alt="Nudo logo" height="auto"
+                                                        src="https://res.cloudinary.com/difhe4gl3/image/upload/v1604133079/NUDO/assets/Recurso_17_rdzzfx.svg"
+                                                        style="border:none;display:block;outline:none;text-decoration:none;height:auto;width: 50%;font-size:13px;"
                                                         width="560" />
 
                                                 </td>
@@ -161,7 +161,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
 
                                                     <div
                                                         style="font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:18px;font-weight:100;line-height:40x;text-align:center;color:black;">
-                                                        Ewscucha, Siente, Mira, Organiza, Juega...Recuerda!</div>
+                                                        Siente, Mira, Escucha, Recuerda!</div>
                                                 </td>
                                             </tr>
 
@@ -230,7 +230,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
                                                                     <td style="width:600px;">
 
                                                                         <img alt="" height="auto"
-                                                                            src="https://kaikusinlactosa.com/blog/wp-content/uploads/2018/09/kaiku-sin-lactosa-ideas-para-fotos-editar-fotos-aplicaciones-1024x756.jpeg"
+                                                                            src="http://nimus.de/share/tpl-card/lineshadow.png"
                                                                             style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
                                                                             width="600" />
 
@@ -248,8 +248,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
 
                                                         <div
                                                             style="font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:center;color:#000000;">
-                                                            Hola ${name}! Accediendo a este enlace confirmarás tu cuenta y podrás acceder a NUDO para empezar a organizar tus recuerdos. Empezamos?</div>
-
+                                                            Hola ${name}! Accede a este enlace y activa tu cuenta para empezar a deisfrutar de Nudo. Bienvenido/a!</div>
                                                     </td>
                                                 </tr>
 
@@ -261,12 +260,12 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
                                                             style="border-collapse:separate;line-height:100%;">
                                                             <tr>
                                                                 <td align="center" bgcolor="#839672"  role="presentation"
-                                                                    style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:15px; background-color: #839672; background-color: #839672;"
+                                                                    style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:15px; background-color: #839672"
                                                                     valign="middle">
                                                                     <a href="http://localhost:3000/user/${id}/activate/${activationToken}"
-                                                                        style="display:inline-block;background-color: white; border-radius:24px;color:white;font-family: 'Montserrat', sans-serif;;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:15px 30px;mso-padding-alt:0px;border-radius:2px;"
+                                                                        style="display:inline-block;background-color: #839672; border-radius:24px;color:white;font-family: 'Montserrat', sans-serif;;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:15px 30px;mso-padding-alt:0px;border-radius:2px;"
                                                                         target="_blank">
-                                                                        Activa tu Cuenta
+                                                                        Activa tu cuenta
                                                                     </a>
                                                                 </td>
                                                             </tr>
