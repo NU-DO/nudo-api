@@ -1,3 +1,5 @@
+const mongoose = require('mongoose')
+const mailer = require('../config/mailer.config')
 const User = require('../models/user.model')
 const Image = require('../models/image.model')
 const Playlist = require('../models/playlist.model')
@@ -6,7 +8,6 @@ const Event = require('../models/event.model')
 const Location = require('../models/location.model')
 const Appointment = require('../models/appointment.model')
 const GameScore = require('../models/gameScore.model')
-const mongoose = require('mongoose')
 const createError = require('http-errors')
 
 module.exports.create = (req, res, next) => {
@@ -17,8 +18,33 @@ module.exports.create = (req, res, next) => {
   })
 
   user.save()
-    .then((user) => res.status(201).json(user))
+    .then((user) => {
+      mailer.sendValidationEmail({
+        name: user.username,
+        email: user.email,
+        id: user._id.toString(),
+        activationToken: user.activation.token
+      })
+      res.status(201).json(user)
+    })
     .catch(next)
+}
+
+module.exports.activate = (req, res, next) => {
+  User.findOne({ _id: req.params.id, 'activation.token': req.params.token })
+    .then(user => {
+      if (user) {
+        user.activation.active = true
+        user.save()
+          .then(() => {
+            res.json('Cuenta activada. Accede!')
+          })
+          .catch(err => console.log(err))
+      } else {
+        res.json('Link no válido, pruebe de nuevo')
+      }
+    })
+    .catch(err => console.log(err))
 }
 
 module.exports.doLogin = (req, res, next) => {
@@ -37,13 +63,17 @@ module.exports.doLogin = (req, res, next) => {
             if (!match) {
               throw createError(400, 'invalid password')
             } else {
-              req.session.user = user
-              res.json(user)
+              if (user.activation.active) {
+                req.session.user = user
+                res.json(user)
+              } else {
+                throw createError(400, 'Activa tu Cuenta')
+              }
             }
           })
       }
     })
-    .catch(next)
+    .catch (next)
 }
 
 module.exports.logout = (req, res, next) => {
@@ -53,13 +83,13 @@ module.exports.logout = (req, res, next) => {
 
 module.exports.delete = (req, res, next) => {
   User.findByIdAndRemove(req.params.id)
-    .then(() => Image.remove({user: req.params.id}))
-    .then(() => Playlist.remove({user: req.params.id}))
-    .then(() => Event.remove({user: req.params.id}))
-    .then(() => Appointment.remove({user: req.params.id}))
-    .then(() => Contact.remove({user: req.params.id}))
-    .then(() => Location.remove({user: req.params.id}))
-    .then(() => GameScore.remove({user: req.params.id}))
+    .then(() => Image.remove({ user: req.params.id }))
+    .then(() => Playlist.remove({ user: req.params.id }))
+    .then(() => Event.remove({ user: req.params.id }))
+    .then(() => Appointment.remove({ user: req.params.id }))
+    .then(() => Contact.remove({ user: req.params.id }))
+    .then(() => Location.remove({ user: req.params.id }))
+    .then(() => GameScore.remove({ user: req.params.id }))
     .then(() => req.session.destroy())
     .then(next)
     .catch(err => console.log(err))

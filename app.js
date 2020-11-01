@@ -49,8 +49,9 @@ app.use(function (error, req, res, next) {
     data.errors = error.errors
   } else if (error instanceof mongoose.Error.CastError) {
     error = createError(404, 'Resource not found')
+  } else if (error.code === 11000) {
+      error = createError(404, 'El usuario ya existe')
   }
-
   data.message = error.message
   res.json(data)
 })

@@ -13,6 +13,7 @@ const uploadController = require('../controllers/upload.controller')
 const upload = require('../config/cloudinary.config')
 
 router.post('/user', authMiddleware.isNotAuthenticated, userController.create)
+router.post('/user/:id/activate/:token', authMiddleware.isNotAuthenticated, userController.activate)
 router.post('/login', authMiddleware.isNotAuthenticated, userController.doLogin)
 router.post('/logout', authMiddleware.isAuthenticated, userController.logout)
 router.delete('/user/:id/delete', authMiddleware.isAuthenticated, userController.delete)
