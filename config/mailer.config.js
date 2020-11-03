@@ -24,7 +24,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
 
         <head>
             <title>
-                Say hello to card
+                Nudo confirmation token
             </title>
             <!--[if !mso]><!-- -->
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,6 +41,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
                     padding: 0;
                     -webkit-text-size-adjust: 100%;
                     -ms-text-size-adjust: 100%; 
+                    font-family: Roboto, sans-serif;
                 }
 
                 table,
@@ -126,7 +127,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
                                                     <h2>Hola ${name}!</h2>
 
                                                     <img alt="Nudo logo" height="auto"
-                                                        src="https://res.cloudinary.com/difhe4gl3/image/upload/v1604133079/NUDO/assets/Recurso_17_rdzzfx.svg"
+                                                        src="https://res.cloudinary.com/difhe4gl3/image/upload/v1604403330/NUDO/Email%20Images/NudoLogoNodemailer_pdhvyd.png"
                                                         style="border:none;display:block;outline:none;text-decoration:none;height:auto;width: 50%;font-size:13px;"
                                                         width="560" />
 
@@ -153,14 +154,14 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
                                         <table border="0" cellpadding="0" cellspacing="0" role="presentation"
                                             style="vertical-align:top;" width="100%">
 
-                                            <hr>
+                                           
 
                                             <tr>
                                                 <td align="center"
                                                     style="font-size:0px;padding:30px 40px 10px 40px;word-break:break-word;">
 
                                                     <div
-                                                        style="font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:18px;font-weight:100;line-height:40x;text-align:center;color:black;">
+                                                        style="font-family: Roboto, Helvetica, Arial, sans-serif;font-size:18px;font-weight:100;line-height:40x; text-align:center;color:black;">
                                                         Siente, Mira, Escucha, Recuerda!</div>
                                                 </td>
                                             </tr>
@@ -248,7 +249,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
 
                                                         <div
                                                             style="font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:16px;font-weight:300;line-height:24px;text-align:center;color:#000000;">
-                                                            Hola ${name}! Accede a este enlace y activa tu cuenta para empezar a deisfrutar de Nudo. Bienvenido/a!</div>
+                                                            Hola ${name}! Accede a este enlace y activa tu cuenta para empezar a disfrutar de Nudo. Bienvenid@!</div>
                                                     </td>
                                                 </tr>
 
@@ -263,7 +264,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
                                                                     style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:15px; background-color: #839672"
                                                                     valign="middle">
                                                                     <a href="http://localhost:3000/user/${id}/activate/${activationToken}"
-                                                                        style="display:inline-block;background-color: #839672; border-radius:24px;color:white;font-family: 'Montserrat', sans-serif;;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:15px 30px;mso-padding-alt:0px;border-radius:2px;"
+                                                                        style="display:inline-block;background-color: #EF7E93; border-radius:24px;color:white;font-family: 'Montserrat', sans-serif;;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:15px 30px;mso-padding-alt:0px;border-radius:2px;"
                                                                         target="_blank">
                                                                         Activa tu cuenta
                                                                     </a>
