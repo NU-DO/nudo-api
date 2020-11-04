@@ -33,7 +33,10 @@ module.exports.getSongsFromSpotify = (req, res, next) => {
         .then(songs => {
             res.json(songs.data.tracks.items)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            res.json(err)
+        })
 }
 
 module.exports.create = (req, res, next) => {
