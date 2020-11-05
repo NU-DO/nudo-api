@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 const gameScoresSchema = new mongoose.Schema(
     {
         user: {
@@ -27,7 +26,6 @@ const gameScoresSchema = new mongoose.Schema(
         }
     }
 )
-
 
 const GameScores = mongoose.model('gameScore', gameScoresSchema)
 module.exports = GameScores

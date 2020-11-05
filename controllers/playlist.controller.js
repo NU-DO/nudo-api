@@ -28,7 +28,7 @@ module.exports.getSongsFromSpotify = (req, res, next) => {
     axios({
         url: `https://api.spotify.com/v1/search?q=${req.body.search}&type=track&market=GB`,
         method: 'get',
-        headers: { "Authorization": `Bearer ${token}` }
+        headers: { 'Authorization': `Bearer ${token}` }
     })
         .then(songs => {
             res.json(songs.data.tracks.items)

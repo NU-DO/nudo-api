@@ -1,7 +1,6 @@
 const Image = require('../models/image.model')
 const createError = require('http-errors')
 
-
 module.exports.getImages = (req, res, next) => {
     Image.find({ user: req.session.user.id })
         .then(images => {

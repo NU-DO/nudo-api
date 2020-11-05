@@ -50,7 +50,7 @@ app.use(function (error, req, res, next) {
   } else if (error instanceof mongoose.Error.CastError) {
     error = createError(404, 'Resource not found')
   } else if (error.code === 11000) {
-      error = createError(404, 'El usuario ya existe')
+    error = createError(404, 'El usuario ya existe')
   }
   data.message = error.message
   res.json(data)
@@ -62,15 +62,15 @@ app.listen(port, () => {
 })
 
 function normalizePort(val) {
-  const port = parseInt(val, 10);
+  const port = parseInt(val, 10)
 
   if (isNaN(port)) {
-    return val;
+    return val
   }
 
   if (port >= 0) {
-    return port;
+    return port
   }
 
-  return false;
+  return false
 }

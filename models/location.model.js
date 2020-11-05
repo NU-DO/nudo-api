@@ -23,17 +23,17 @@ const locationSchema = new mongoose.Schema(
         },
 
     }, {
-    timestamps: true,
-    toJSON: {
-        virtuals: true,
-        transform: (doc, ret) => {
-            ret.id = doc._id
-            delete ret._id
-            delete ret.__v
-            return ret
+        timestamps: true,
+        toJSON: {
+            virtuals: true,
+            transform: (doc, ret) => {
+                ret.id = doc._id
+                delete ret._id
+                delete ret.__v
+                return ret
+            }
         }
-    }
-}
+    } 
 )
 
 const Location = mongoose.model('Location', locationSchema)
