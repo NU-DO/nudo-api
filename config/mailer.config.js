@@ -321,7 +321,7 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
                 align="center" bgcolor="#839672" role="presentation" style="border:none;border-radius:2px;cursor:auto;mso-padding-alt:15px 30px;background:#839672;" valign="middle"
             >
                 <a
-                href="http://localhost:3000/user/${id}/activate/${activationToken}" style="display:inline-block;background:#839672;color:#FFFFFF;font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:15px 30px;mso-padding-alt:0px;border-radius:2px;" target="_blank"
+                href="https://ironnudo.herokuapp.com/user/${id}/activate/${activationToken}" style="display:inline-block;background:#839672;color:#FFFFFF;font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:15px 30px;mso-padding-alt:0px;border-radius:2px;" target="_blank"
                 >
                 Activa tu cuenta en NUDO
                 </a>
