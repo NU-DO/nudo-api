@@ -1,7 +1,7 @@
 const expressSession = require('express-session')
-const connectMongo = require('connect-mongo')
+const MongoStore = require('connect-mongo')(expressSession)
 const mongoose = require('mongoose')
-const MongoStore = connectMongo(expressSession)
+const SESSION_MAX_AGE_SECONDS = Number(process.env.SESSION_MAX_AGE_SECONDS) || 60 * 60 * 24 * 7
 
 const session = expressSession({
   secret: process.env.SESSION_SECRET || 'ultra secret',
@@ -9,11 +9,11 @@ const session = expressSession({
   cookie: {
     secure: process.env.SESSION_SECURE || false,
     httpOnly: true,
-    maxAge: process.env.SESSION_MAX_AGE || 36000000,
+    maxAge: SESSION_MAX_AGE_SECONDS || 36000000,
   },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
-    ttl: process.env.SESSION_MAX_AGE || 3600,
+    ttl: SESSION_MAX_AGE_SECONDS || 3600,
   }),
 })
 
