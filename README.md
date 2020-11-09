@@ -25,6 +25,16 @@ npm run dev
 ```
 This will execute "dev": "nodemon -e js,css app.js" so you won't need to stop and run the app everytime you change anything.
 
+- Variables required in the .env:
+    - PORT
+    - NM_USER (nodemailer)
+    - NM_PASS
+    - CLOUDINARY_NAME
+    - CLOUDINARY_KEY 
+    - CLOUDINARY_SECRET
+    - SPOTIFY_CLIENT_ID
+    - SPOTIFY_CLIENT_SECRET
+    
 ## Tools:
 - Express - ^4.17.1
 - MongoDB (Mongoose - ^5.10.0)
