@@ -1,6 +1,6 @@
 # NUDO - API
 This is the API of Nudo.
-![Nudo](https://res.cloudinary.com/difhe4gl3/image/upload/v1604218253/NUDO/assets/Recurso_17_ky7ydo.svg)
+![Nudo](https://res.cloudinary.com/difhe4gl3/image/upload/v1604218253/NUDO/assets/Recurso_17_ky7ydo.svg =100)
 ## API developed with Express and MongoDB
 
 - [Installation and use](#installation-and-use)
