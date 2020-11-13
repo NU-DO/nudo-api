@@ -9,6 +9,7 @@ const eventController = require('../controllers/event.controller')
 const locationController = require('../controllers/location.controller')
 const appointmentController = require('../controllers/appointment.controller')
 const gameScoreController = require('../controllers/gameScore.controller')
+const videoController = require('../controllers/video.controller')
 const uploadController = require('../controllers/upload.controller')
 const upload = require('../config/cloudinary.config')
 
@@ -43,6 +44,11 @@ router.get('/location', authMiddleware.isAuthenticated, locationController.getLo
 router.post('/location/new', authMiddleware.isAuthenticated, locationController.create)
 router.patch('/location/:id/edit', authMiddleware.isAuthenticated, locationController.edit)
 router.delete('/location/:id/delete', authMiddleware.isAuthenticated, locationController.delete)
+
+router.get('/video', authMiddleware.isAuthenticated, videoController.getVideos)
+router.post('/video/new', authMiddleware.isAuthenticated, videoController.create)
+router.patch('/video/:id/edit', authMiddleware.isAuthenticated, videoController.edit)
+router.delete('/video/:id/delete', authMiddleware.isAuthenticated, videoController.delete)
 
 router.get('/appointment', authMiddleware.isAuthenticated, appointmentController.getAppointments)
 router.post('/appointment/new', authMiddleware.isAuthenticated, appointmentController.create)
