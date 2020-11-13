@@ -10,7 +10,7 @@ module.exports.getVideos = (req, res, next) => {
 }
 
 module.exports.create = (req, res, next) => {
-    const video = new Image({
+    const video = new Video({
         user: req.session.user.id,
         videoData: req.body.videoData,
         title: req.body.title,
