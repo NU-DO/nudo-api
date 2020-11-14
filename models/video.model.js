@@ -2,8 +2,11 @@ const mongoose = require('mongoose')
 
 const videoSchema = new mongoose.Schema(
     {   
-        videoData: {
-            type: { String },
+        videoId: {
+            type: String,
+        },
+        snippet: {
+            type: String
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
