@@ -14,7 +14,7 @@ const session = expressSession({
   },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
-    ttl: SESSION_MAX_AGE_SECONDS || 3600,
+    ttl: SESSION_MAX_AGE_SECONDS || 36000000,
   }),
 })
 
