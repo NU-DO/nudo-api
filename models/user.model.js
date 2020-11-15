@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const bcrypt = require('bcrypt')
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+const USER_PATTERN = /^[a-z0-9\s]+$/i
 const SALT_WORK_FACTOR = 10
 
 const generateRandomToken = () => {
@@ -27,6 +28,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, 'El nombre de usuario es obligatorio'],
             unique: [true, 'Este usuario ya existe'],
+            match: [USER_PATTERN, 'El usuario es invalido'],
             trim: true,
             lowercase: true
         },
