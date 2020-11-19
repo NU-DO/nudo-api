@@ -84,54 +84,5 @@ userSchema.methods.checkPassword = function (password) {
     return bcrypt.compare(password, this.password)
 }
 
-userSchema.virtual('images', {
-    ref: 'Image',
-    localField: '_id',
-    foreignField: 'user',
-    justOne: false,
-})
-
-userSchema.virtual('locations', {
-    ref: 'Location',
-    localField: '_id',
-    foreignField: 'user',
-    justOne: false,
-})
-
-userSchema.virtual('contacts', {
-    ref: 'Contact',
-    localField: '_id',
-    foreignField: 'user',
-    justOne: false,
-})
-
-userSchema.virtual('events', {
-    ref: 'Event',
-    localField: '_id',
-    foreignField: 'user',
-    justOne: false,
-})
-
-userSchema.virtual('appointments', {
-    ref: 'Appointment',
-    localField: '_id',
-    foreignField: 'user',
-    justOne: false,
-})
-
-userSchema.virtual('gamescores', {
-    ref: 'GameScore',
-    localField: '_id',
-    foreignField: 'user',
-    justOne: false,
-})
-
-userSchema.virtual('playlist', {
-    ref: 'Playlist',
-    localField: '_id',
-    foreignField: 'user',
-    justOne: false,
-})
-
 const User = mongoose.model('User', userSchema)
 module.exports = User
