@@ -3,7 +3,7 @@ const createError = require('http-errors')
 
 module.exports.getEvents = (req, res, next) => {
     Event.find({ user: req.session.user.id })
-        .populate('image')
+        .populate('image', 'url')
         .populate('contacts', 'photo')
         .populate('playlist')
         .populate('location')
