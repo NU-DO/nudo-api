@@ -19,9 +19,29 @@ const eventSchema = new mongoose.Schema(
             min: [1900, 'Introduc un año valido'],
             max: [2030, 'Introduc un año valido']
         },
-        links: {
-            type: [String]
-        }
+        image: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Image'
+        },
+        contacts: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                require: true,
+                ref: "Contact"
+            }
+        ],
+        playlist: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Playlist'
+        },
+        location: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Location'
+        },
+        video: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Video'
+        },
     } , {
         timestamps: true,
         toJSON: {
@@ -35,13 +55,6 @@ const eventSchema = new mongoose.Schema(
         }
     }
 )
-
-eventSchema.virtual('images', {
-    ref: 'Image',
-    localField: '_id',
-    foreignField: 'event',
-    justOne: false,
-})
 
 const Event = mongoose.model('Event', eventSchema)
 module.exports = Event

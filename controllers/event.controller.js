@@ -3,6 +3,11 @@ const createError = require('http-errors')
 
 module.exports.getEvents = (req, res, next) => {
     Event.find({ user: req.session.user.id })
+        .populate('image')
+        .populate('contacts', 'photo')
+        .populate('playlist')
+        .populate('location')
+        .populate('video')
         .then(events => {
             res.json(events)
         })
@@ -15,7 +20,11 @@ module.exports.create = (req, res, next) => {
         title: req.body.title,
         year: req.body.year,
         description: req.body.description,
-        links: req.body.links,
+        image: req.body.image,
+        playlist: req.body.playlist,
+        location: req.body.location,
+        contacts: req.body.contacts,
+        video: req.body.video,
     })
 
     event.save()

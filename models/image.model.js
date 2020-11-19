@@ -21,12 +21,6 @@ const imageSchema = new mongoose.Schema(
         description: {
             type: String
         },
-        contact: {
-            type: [mongoose.Schema.Types.ObjectId]
-        },
-        event: {
-            type: mongoose.Schema.Types.ObjectId
-        },
     } , {
         timestamps: true,
         toJSON: {
