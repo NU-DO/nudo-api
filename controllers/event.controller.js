@@ -20,7 +20,7 @@ module.exports.create = (req, res, next) => {
         title: req.body.title,
         year: req.body.year,
         description: req.body.description,
-        images: req.body.images,
+        image: req.body.image,
         playlist: req.body.playlist,
         location: req.body.location,
         contacts: req.body.contacts,

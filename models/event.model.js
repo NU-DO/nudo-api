@@ -19,7 +19,7 @@ const eventSchema = new mongoose.Schema(
             min: [1900, 'Introduc un año valido'],
             max: [2030, 'Introduc un año valido']
         },
-        images: {
+        image: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Image'
         },
