@@ -22,14 +22,14 @@ const eventSchema = new mongoose.Schema(
         images: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                require: true,
+                required: true,
                 ref: 'Image'
             }
         ],
         contacts: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                require: true,
+                required: true,
                 ref: 'Contact'
             }
         ],
