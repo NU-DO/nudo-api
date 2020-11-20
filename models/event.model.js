@@ -19,6 +19,7 @@ const eventSchema = new mongoose.Schema(
             min: [1900, 'Introduc un año valido'],
             max: [2030, 'Introduc un año valido']
         },
+<<<<<<< HEAD
         images: [
             {
                 type: mongoose.Schema.Types.ObjectId,
@@ -26,6 +27,12 @@ const eventSchema = new mongoose.Schema(
                 ref: 'Image'
             }
         ],
+=======
+        images: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Image'
+        },
+>>>>>>> c4b0400e1f9031a00361fc0e3c7371c341dd747a
         contacts: [
             {
                 type: mongoose.Schema.Types.ObjectId,
