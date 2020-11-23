@@ -32,11 +32,11 @@ app.use((req, _, next) => {
 const router = require('./config/routes.js')
 app.use('/', router)
 
-app.use(function (req, res, next) {
+app.use(function (_, _, next) {
   next(createError(404))
 })
 
-app.use(function (error, req, res, next) {
+app.use(function (error, _, res, _) {
   console.error('-' * 1000)
   console.error(error)
 

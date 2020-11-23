@@ -1,7 +1,7 @@
 const Playlist = require('../models/playlist.model')
-const createError = require('http-errors')
 const SpotifyWebApi = require('spotify-web-api-node')
 const axios = require('axios')
+const createError = require('http-errors')
 
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -24,7 +24,7 @@ module.exports.getSongs = (req, res, next) => {
         .catch(next)
 }
 
-module.exports.getSongsFromSpotify = (req, res, next) => { 
+module.exports.getSongsFromSpotify = (req, res, next) => {
     axios({
         url: `https://api.spotify.com/v1/search?q=${req.body.search}&type=track&market=GB`,
         method: 'get',
@@ -64,7 +64,7 @@ module.exports.edit = (req, res, next) => {
         .catch(next)
 }
 
-module.exports.delete = (req, res, next) => {
+module.exports.delete = (req, res) => {
     Playlist.findByIdAndRemove(req.params.id)
         .then(playlist => res.status(200).json(playlist))
         .catch(err => console.log(err))

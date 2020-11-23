@@ -13,9 +13,6 @@ var storage = new CloudinaryStorage({
 	params: {
 		folder: 'NUDO',
 		allowedFormats: ['jpg', 'png', 'jpeg'],
-		// filename: function (req, file, cb) {
-		// 	cb(null, file.originalname)
-		// }
 	}
 })
 

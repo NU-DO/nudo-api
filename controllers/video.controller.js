@@ -25,7 +25,7 @@ module.exports.create = (req, res, next) => {
 
 module.exports.edit = (req, res, next) => {
     const body = req.body
-    
+
     Video.findOneAndUpdate({ _id: req.params.id }, body, { runValidators: true, new: true })
         .then(video => {
             res.status(201).json(video)

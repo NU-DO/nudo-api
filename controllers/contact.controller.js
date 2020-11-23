@@ -19,7 +19,7 @@ module.exports.create = (req, res, next) => {
         email: req.body.email,
         phone: req.body.phone,
         photo: req.body.photo,
-        birthday: req.body.birthday, 
+        birthday: req.body.birthday,
         description: req.body.description
     })
 

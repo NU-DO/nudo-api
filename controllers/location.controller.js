@@ -32,7 +32,7 @@ module.exports.edit = (req, res, next) => {
         .catch(next)
 }
 
-module.exports.delete = (req, res, next) => {
+module.exports.delete = (req, res) => {
     Location.findByIdAndRemove(req.params.id)
         .then(location => res.status(200).json(location))
         .catch(err => console.log(err))
