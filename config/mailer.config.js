@@ -3,7 +3,8 @@ const host = process.env.PORT || 'https://localhost:3010/'
 const user = process.env.NM_USER
 
 const transport = nodemailer.createTransport(
-    {
+    {   
+        name: 'www.ironnudo.herokuapp.com',
         host: 'smtp.gmail.com',
         auth: {
             user: user,
