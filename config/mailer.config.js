@@ -5,10 +5,12 @@ const user = process.env.NM_USER
 const transport = nodemailer.createTransport(
     {   
         service:'gmail',
-        //host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        host: 'smtp.gmail.com',
         auth: {
             //type: 'OAuth2',
-            user: user,
+            user: 'iron.nudo@gmail.com',
             pass: process.env.NM_PASS,
             //clientId: process.env.OAUTH_CLIENTID,
             //clientSecret: process.env.OAUTH_CLIENT_SECRET,
@@ -17,10 +19,15 @@ const transport = nodemailer.createTransport(
     }
 )
 
+transport.verify()
+    .then(() => {
+        console.log('ready for send emails')
+    })
+
 module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
     transport.sendMail({
         to: email,
-        from: 'Nudo Team',
+        from: 'Nudo Team <iron.nudo@gmail.com' ,
         subject: 'Activa tu cuenta en un sencillo paso',
         html: ` 
         <!doctype html>
