@@ -4,7 +4,7 @@ const user = process.env.NM_USER
 
 const transport = nodemailer.createTransport(
     {   
-        service:'Gmail',
+        service:'gmail',
         //host: 'smtp.gmail.com',
         auth: {
             //type: 'OAuth2',
@@ -420,6 +420,6 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
         </body>
     </html>`
     })
-        //.then(console.log)
-        //.catch(console.error)
+        .then(console.log)
+        .catch(console.error)
 }
