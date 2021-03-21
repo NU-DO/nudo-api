@@ -5,14 +5,14 @@ const user = process.env.NM_USER
 const transport = nodemailer.createTransport(
     {   
         service:'gmail',
-        //host: 'smtp.gmail.com',
+        host: 'smtp.gmail.com',
         auth: {
-            //type: 'OAuth2',
+            type: 'OAuth2',
             user: user,
             pass: process.env.NM_PASS,
-            //clientId: process.env.OAUTH_CLIENTID,
-            //clientSecret: process.env.OAUTH_CLIENT_SECRET,
-            //refreshToken: process.env.OAUTH_REFRESH_TOKEN
+            clientId: process.env.OAUTH_CLIENTID,
+            clientSecret: process.env.OAUTH_CLIENT_SECRET,
+            refreshToken: process.env.OAUTH_REFRESH_TOKEN
         }
     }
 )
