@@ -4,7 +4,7 @@ const user = process.env.NM_USER
 
 const transport = nodemailer.createTransport(
     {   
-        name: 'www.ironnudo.herokuapp.com',
+        service:'gmail',
         host: 'smtp.gmail.com',
         auth: {
             user: user,
