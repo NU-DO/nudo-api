@@ -4,7 +4,7 @@ const user = process.env.NM_USER
 
 const transport = nodemailer.createTransport(
     {   
-        service:'gmail',
+        service:'Gmail',
         //host: 'smtp.gmail.com',
         auth: {
             type: 'OAuth2',
