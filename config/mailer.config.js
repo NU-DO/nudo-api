@@ -420,6 +420,6 @@ module.exports.sendValidationEmail = ({ id, email, activationToken, name }) => {
         </body>
     </html>`
     })
-        .then(console.log)
-        .catch(console.error)
+        //.then(console.log)
+        //.catch(console.error)
 }
