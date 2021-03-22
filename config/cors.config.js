@@ -3,7 +3,8 @@ const cors = require('cors')
 const corsMiddleware = cors({
   origin: 'https://ironnudo.herokuapp.com' || process.env.CORS_ORIGIN , // 'http://localhost:3000'
   allowedHeaders: ['Content-Type'],
-  credentials: true
+  credentials: true,
+  
 })
 
 module.exports = corsMiddleware
