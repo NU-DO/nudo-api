@@ -8,23 +8,15 @@ const mongoose = require('mongoose')
 
 require('./config/db.config')
 const session = require('./config/session.config')
-const cors = require('./config/cors.config')
-
+//const cors = require('./config/cors.config')
+const cors = require('cors')
 const app = express()
 
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1)
 }
 
-app.use(cors)
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
